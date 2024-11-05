@@ -1,0 +1,75 @@
+.mainContainer {
+  padding: 20px;
+  margin: auto;
+  max-width: 600px;
+}
+
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.inputContainer {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 45%;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  color: #aaa;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 5px 10px 5px 30px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.addTaskInput {
+  flex: 1;
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.taskItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.taskCompleted {
+  background-color: #dafeee;
+  border-color: #b8fadd;
+}
+
+.taskIncomplete {
+  background-color: #fff;
+  border-color: #ddd;
+}
+
+.filterButton {
+  cursor: pointer;
+  border: none;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.activeFilter {
+  background-color: #26af00;
+}
+
+.inactiveFilter {
+  background-color: #989fa7;
+}
