@@ -1,7 +1,8 @@
-import { MagnifyingGlass, X } from "@phosphor-icons/react";
+import { MagnifyingGlass, PencilSimple, X } from "@phosphor-icons/react";
 import { useState, useEffect, useCallback, useMemo } from "react";
 import { debounce } from "lodash";
 import styles from "./style.module.css";
+import useMobile from "../hooks/useMobile";
 interface Task {
   id: string;
   text: string;
@@ -25,6 +26,8 @@ const TaskManagement = () => {
   const [filter, setFilter] = useState<"all" | "completed" | "incomplete">(
     "all"
   );
+    
+  const isMobile = useMobile();
 
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(taskList));
@@ -73,9 +76,9 @@ const TaskManagement = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <div className={styles.headerContainer}>
-        <h2>Today</h2>
-        <div className={styles.inputContainer}>
+      <div className={isMobile ? styles.headerContainerMobile : styles.headerContainer}>
+        <span>Today</span>
+        <div className={isMobile ? styles.inputContainerMobile : styles.inputContainer}>
           <span className={styles.searchIcon}>
             <MagnifyingGlass size={18} />
           </span>
@@ -144,11 +147,14 @@ const TaskManagement = () => {
               />
               <span>{task.text}</span>
             </label>
-            <X
-              size={18}
-              style={{ cursor: "pointer" }}
-              onClick={() => handleDeleteTask(task.id)}
-            />
+            <div style={{ display: "flex", gap: "4px" }}>
+              <PencilSimple style={{ cursor: "pointer" }} size={18} />
+              <X
+                size={18}
+                style={{ cursor: "pointer" }}
+                onClick={() => handleDeleteTask(task.id)}
+              />
+            </div>
           </div>
         ))}
       </div>
