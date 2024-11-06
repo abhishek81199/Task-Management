@@ -26,7 +26,7 @@ const TaskManagement = () => {
   const [filter, setFilter] = useState<"all" | "completed" | "incomplete">(
     "all"
   );
-    
+
   const isMobile = useMobile();
 
   useEffect(() => {
@@ -76,9 +76,17 @@ const TaskManagement = () => {
 
   return (
     <div className={styles.mainContainer}>
-      <div className={isMobile ? styles.headerContainerMobile : styles.headerContainer}>
+      <div
+        className={
+          isMobile ? styles.headerContainerMobile : styles.headerContainer
+        }
+      >
         <span>Today</span>
-        <div className={isMobile ? styles.inputContainerMobile : styles.inputContainer}>
+        <div
+          className={
+            isMobile ? styles.inputContainerMobile : styles.inputContainer
+          }
+        >
           <span className={styles.searchIcon}>
             <MagnifyingGlass size={18} />
           </span>
@@ -147,14 +155,11 @@ const TaskManagement = () => {
               />
               <span>{task.text}</span>
             </label>
-            <div style={{ display: "flex", gap: "4px" }}>
-              <PencilSimple style={{ cursor: "pointer" }} size={18} />
-              <X
-                size={18}
-                style={{ cursor: "pointer" }}
-                onClick={() => handleDeleteTask(task.id)}
-              />
-            </div>
+            <X
+              size={18}
+              style={{ cursor: "pointer" }}
+              onClick={() => handleDeleteTask(task.id)}
+            />
           </div>
         ))}
       </div>
